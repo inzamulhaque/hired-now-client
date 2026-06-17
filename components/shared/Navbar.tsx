@@ -35,7 +35,7 @@ const navLinks = [
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-gradient-to-r from-[#0B1F6D] via-[#162B8C] to-[#7C3AED] text-white shadow-lg">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container max-w-[1200px] mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <motion.div
             whileHover={{
