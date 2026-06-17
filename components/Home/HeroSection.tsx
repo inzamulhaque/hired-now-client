@@ -29,6 +29,7 @@ const HeroSection = () => {
             transition={{
               duration: 0.6,
             }}
+            className="order-2 md:order-1 lg:order-1"
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
               <Briefcase className="h-4 w-4 text-primary" />
@@ -99,7 +100,7 @@ const HeroSection = () => {
             transition={{
               duration: 0.8,
             }}
-            className="relative"
+            className="relative order-1 md:order-2 lg:order-2"
           >
             <div className="relative overflow-hidden rounded-3xl border bg-background shadow-2xl">
               <Image
