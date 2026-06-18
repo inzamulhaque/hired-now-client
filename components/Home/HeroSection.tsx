@@ -64,7 +64,12 @@ const HeroSection = () => {
             <div className="mt-10 flex flex-wrap gap-8">
               <div>
                 <h3 className="text-2xl font-bold">
-                  <CountUp end={10} duration={0.5} />
+                  <CountUp
+                    end={10}
+                    duration={0.5}
+                    enableScrollSpy={true}
+                    scrollSpyOnce={false}
+                  />
                   K+
                 </h3>
                 <p className="text-sm text-muted-foreground">Freelancers</p>
@@ -72,7 +77,12 @@ const HeroSection = () => {
 
               <div>
                 <h3 className="text-2xl font-bold">
-                  <CountUp end={2} duration={0.2} />
+                  <CountUp
+                    end={2}
+                    duration={0.2}
+                    enableScrollSpy={true}
+                    scrollSpyOnce={false}
+                  />
                   K+
                 </h3>
                 <p className="text-sm text-muted-foreground">Companies</p>
@@ -80,7 +90,12 @@ const HeroSection = () => {
 
               <div>
                 <h3 className="text-2xl font-bold">
-                  <CountUp end={15} duration={1} />
+                  <CountUp
+                    end={15}
+                    duration={1}
+                    enableScrollSpy={true}
+                    scrollSpyOnce={false}
+                  />
                   K+
                 </h3>
                 <p className="text-sm text-muted-foreground">Jobs Posted</p>
