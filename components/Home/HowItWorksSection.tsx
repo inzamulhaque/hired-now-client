@@ -41,7 +41,7 @@ const HowItWorksSection = () => {
         <div className="absolute right-0 bottom-0 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container max-w-[1200px] mx-auto px-4">
         {/* heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
