@@ -5,45 +5,45 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import TestimonalImg1 from "../../public/HomePageImages/testimonial1.jpg";
-import TestimonalImg2 from "../../public/HomePageImages/testimonial2.jpg";
-import TestimonalImg3 from "../../public/HomePageImages/testimonial3.jpg";
-import TestimonalImg4 from "../../public/HomePageImages/testimonial4.jpg";
-import TestimonalImg5 from "../../public/HomePageImages/testimonial5.jpg";
+import TestimonialImg1 from "../../public/HomePageImages/testimonial1.jpg";
+import TestimonialImg2 from "../../public/HomePageImages/testimonial2.jpg";
+import TestimonialImg3 from "../../public/HomePageImages/testimonial3.jpg";
+import TestimonialImg4 from "../../public/HomePageImages/testimonial4.jpg";
+import TestimonialImg5 from "../../public/HomePageImages/testimonial5.jpg";
 
 const testimonials = [
   {
     name: "Sarah Johnson",
     role: "UI/UX Designer",
-    image: TestimonalImg1,
+    image: TestimonialImg1,
     review:
       "HiredNow helped me land multiple international clients within weeks. The platform is smooth and easy to use.",
   },
   {
     name: "Michael Brown",
     role: "Startup Founder",
-    image: TestimonalImg2,
+    image: TestimonialImg2,
     review:
       "We hired a talented React developer in less than 48 hours. Amazing experience!",
   },
   {
     name: "Emily Davis",
     role: "Frontend Developer",
-    image: TestimonalImg3,
+    image: TestimonialImg3,
     review:
       "The job recommendations are surprisingly accurate. I found my dream remote job here.",
   },
   {
     name: "David Wilson",
     role: "Product Manager",
-    image: TestimonalImg4,
+    image: TestimonialImg4,
     review:
       "The quality of freelancers on HiredNow is exceptional. Highly recommended.",
   },
   {
     name: "Sophia Miller",
     role: "Graphic Designer",
-    image: TestimonalImg5,
+    image: TestimonialImg5,
     review:
       "The hiring process is transparent and secure. Payments are always on time.",
   },
