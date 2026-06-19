@@ -1,3 +1,4 @@
+import CtaSection from "@/components/Home/CtaSection";
 import FaqSection from "@/components/Home/FaqSection";
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import HeroSection from "@/components/Home/HeroSection";
@@ -12,6 +13,7 @@ export default function Home() {
       <HowItWorksSection />
       <TestimonialsSection />
       <FaqSection />
+      <CtaSection />
     </>
   );
 }
