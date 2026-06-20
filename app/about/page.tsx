@@ -2,6 +2,7 @@ import HeroSection from "@/components/About/HeroSection";
 import HowHiredNowWorksSection from "@/components/About/HowHiredNowWorksSection";
 import OurMissionSection from "@/components/About/OurMissionSection";
 import OurSolutionSection from "@/components/About/OurSolutionSection";
+import PlatformStatisticsSection from "@/components/About/PlatformStatisticsSection";
 import TheProblemWeSolveSection from "@/components/About/TheProblemWeSolveSection";
 
 const page = () => {
@@ -12,6 +13,7 @@ const page = () => {
       <TheProblemWeSolveSection />
       <OurSolutionSection />
       <HowHiredNowWorksSection />
+      <PlatformStatisticsSection />
     </>
   );
 };
