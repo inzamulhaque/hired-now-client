@@ -4,6 +4,7 @@ import "./globals.css";
 import HNThemeProvider from "@/components/provider/HNThemeProvider";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import PageTransition from "@/components/shared/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <HNThemeProvider>
           <Navbar />
-          {children}
+          <PageTransition>{children}</PageTransition>
           <Footer />
         </HNThemeProvider>
       </body>
