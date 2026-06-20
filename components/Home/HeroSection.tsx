@@ -66,7 +66,7 @@ const HeroSection = () => {
                 <h3 className="text-2xl font-bold">
                   <CountUp
                     end={10}
-                    duration={0.5}
+                    duration={5}
                     enableScrollSpy={true}
                     scrollSpyOnce={false}
                   />
@@ -79,7 +79,7 @@ const HeroSection = () => {
                 <h3 className="text-2xl font-bold">
                   <CountUp
                     end={2}
-                    duration={0.2}
+                    duration={5}
                     enableScrollSpy={true}
                     scrollSpyOnce={false}
                   />
@@ -92,7 +92,7 @@ const HeroSection = () => {
                 <h3 className="text-2xl font-bold">
                   <CountUp
                     end={15}
-                    duration={1}
+                    duration={5}
                     enableScrollSpy={true}
                     scrollSpyOnce={false}
                   />
@@ -142,7 +142,10 @@ const HeroSection = () => {
                 <Users className="h-5 w-5 text-primary" />
 
                 <div>
-                  <p className="font-semibold">500+ New Hires</p>
+                  <p className="font-semibold">
+                    {" "}
+                    <CountUp end={500} duration={5} />+ New Hires
+                  </p>
                   <p className="text-xs text-muted-foreground">This Month</p>
                 </div>
               </div>
@@ -161,7 +164,10 @@ const HeroSection = () => {
               <div>
                 <p className="font-semibold">Remote Jobs</p>
 
-                <p className="text-2xl font-bold text-primary">3,200+</p>
+                <p className="text-2xl font-bold text-primary">
+                  {" "}
+                  <CountUp end={3200} duration={5} />+
+                </p>
               </div>
             </motion.div>
           </motion.div>

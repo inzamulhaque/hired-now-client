@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import HeroImg from "../../public/AboutPageImages/AboutHeroSection.png";
+import CountUp from "react-countup";
 
 const HeroSection = () => {
   return (
@@ -115,7 +116,10 @@ const HeroSection = () => {
             >
               <p className="text-sm font-medium">AI Matching</p>
 
-              <p className="text-2xl font-bold text-primary">98%</p>
+              <p className="text-2xl font-bold text-primary">
+                {" "}
+                <CountUp end={98} duration={5} />%
+              </p>
             </motion.div>
 
             <motion.div
@@ -130,7 +134,11 @@ const HeroSection = () => {
             >
               <p className="text-sm font-medium">Successful Hires</p>
 
-              <p className="text-2xl font-bold text-primary">25K+</p>
+              <p className="text-2xl font-bold text-primary">
+                {" "}
+                <CountUp end={25} duration={5} />
+                K+
+              </p>
             </motion.div>
           </motion.div>
         </div>
