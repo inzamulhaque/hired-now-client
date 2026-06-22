@@ -1,7 +1,9 @@
+import ContactHeroSection from "@/components/Contact/ContactHeroSection";
+
 const page = () => {
   return (
     <>
-      <h1>Contact US</h1>
+      <ContactHeroSection />
     </>
   );
 };

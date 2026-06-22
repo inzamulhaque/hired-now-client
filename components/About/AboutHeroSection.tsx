@@ -8,7 +8,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import HeroImg from "../../public/AboutPageImages/AboutHeroSection.png";
 import CountUp from "react-countup";
 
-const HeroSection = () => {
+const AboutHeroSection = () => {
   return (
     <section className="relative overflow-hidden py-4 lg:py-6">
       <div className="absolute inset-0 -z-10">
@@ -147,4 +147,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default AboutHeroSection;

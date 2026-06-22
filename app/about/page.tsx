@@ -1,4 +1,4 @@
-import HeroSection from "@/components/About/HeroSection";
+import AboutHeroSection from "@/components/About/AboutHeroSection";
 import HowHiredNowWorksSection from "@/components/About/HowHiredNowWorksSection";
 import OurMissionSection from "@/components/About/OurMissionSection";
 import OurSolutionSection from "@/components/About/OurSolutionSection";
@@ -8,7 +8,7 @@ import TheProblemWeSolveSection from "@/components/About/TheProblemWeSolveSectio
 const page = () => {
   return (
     <>
-      <HeroSection />
+      <AboutHeroSection />
       <OurMissionSection />
       <TheProblemWeSolveSection />
       <OurSolutionSection />
