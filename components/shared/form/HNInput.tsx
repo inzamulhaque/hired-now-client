@@ -1,6 +1,6 @@
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 type TInputProps = {
   type: string;
@@ -19,11 +19,14 @@ const HNInput = ({
   required,
   placeholder,
 }: TInputProps) => {
+  const { control } = useFormContext();
+
   return (
     <>
       <Controller
         name={name}
-        render={({ field }) => (
+        control={control}
+        render={({ field, fieldState: { error } }) => (
           <Field>
             <FieldLabel htmlFor={name}>
               {label}
@@ -32,12 +35,15 @@ const HNInput = ({
 
             <Input
               {...field}
+              value={field.value ?? ""}
               id={name}
               type={type}
               disabled={disabled}
               placeholder={placeholder}
               className="focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none"
             />
+
+            {error && <FieldError errors={[error]} className="text-red-700" />}
           </Field>
         )}
       />

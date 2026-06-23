@@ -2,14 +2,13 @@ import { ReactNode } from "react";
 import {
   FieldValues,
   FormProvider,
-  Resolver,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
 
 type TFormConfig = {
-  resolver?: Resolver<FieldValues>;
-  defaultValues?: Record<string, any>;
+  resolver?: any;
+  defaultValues?: Record<string, unknown>;
 };
 
 type TFormProps = {
