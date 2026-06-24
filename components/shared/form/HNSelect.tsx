@@ -46,12 +46,18 @@ const HNSelect = ({
 
               <SelectContent
                 className="
-                      bg-black
-                      dark:bg-amber-50
-                      text-white
-                      dark:text-black
-                      border-border
-                      shadow-lg
+                      rounded-xl
+                      border
+                      border-border/50
+                      bg-background/95
+                      text-foreground
+                      backdrop-blur-xl
+                      shadow-xl
+                      animate-in
+                      fade-in-0
+                      zoom-in-95
+                      data-[side=bottom]:slide-in-from-top-2
+                      data-[side=top]:slide-in-from-bottom-2
                     "
               >
                 {children}
