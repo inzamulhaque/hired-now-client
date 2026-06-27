@@ -72,7 +72,11 @@ const Navbar = () => {
         {/* Desktop Auth */}
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost">Sign In</Button>
+          <Link href="/signin">
+            <Button variant="ghost" className="cursor-pointer">
+              Sign In
+            </Button>
+          </Link>
 
           <Button>Sign Up</Button>
         </div>
@@ -186,18 +190,20 @@ const Navbar = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Button
-                    variant="secondary"
-                    className="
-              w-full
-              rounded-xl
-              bg-white
-              text-[#0B1F6D]
-              hover:bg-white/90
-            "
-                  >
-                    Sign In
-                  </Button>
+                  <Link href="/signin">
+                    <Button
+                      variant="secondary"
+                      className="
+                              w-full
+                              rounded-xl
+                              bg-white
+                              text-[#0B1F6D]
+                              hover:bg-white/90
+                            "
+                    >
+                      Sign In
+                    </Button>
+                  </Link>
 
                   <Button
                     className="
