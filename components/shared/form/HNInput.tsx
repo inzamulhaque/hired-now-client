@@ -21,8 +21,6 @@ const HNInput = ({
 }: TInputProps) => {
   const { control } = useFormContext();
 
-  console.log(type);
-
   return (
     <>
       <Controller

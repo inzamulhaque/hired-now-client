@@ -11,5 +11,3 @@ export const contactSchema = z.object({
 
   message: z.string().min(20, "Message must be at least 20 characters"),
 });
-
-export type ContactFormValues = z.infer<typeof contactSchema>;

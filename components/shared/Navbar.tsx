@@ -78,7 +78,9 @@ const Navbar = () => {
             </Button>
           </Link>
 
-          <Button>Sign Up</Button>
+          <Link href="/signup">
+            <Button className="cursor-pointer">Sign Up</Button>
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -205,19 +207,21 @@ const Navbar = () => {
                     </Button>
                   </Link>
 
-                  <Button
-                    className="
-              w-full
-              rounded-xl
-              border
-              border-white/20
-              bg-white/10
-              backdrop-blur
-              hover:bg-white/20
-            "
-                  >
-                    Sign Up
-                  </Button>
+                  <Link href="/signup">
+                    <Button
+                      className="
+                          w-full
+                          rounded-xl
+                          border
+                          border-white/20
+                          bg-white/10
+                          backdrop-blur
+                          hover:bg-white/20
+                        "
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>
