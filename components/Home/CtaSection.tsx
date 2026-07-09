@@ -35,7 +35,7 @@ const CtaSection = () => {
         <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container max-w-[1200px] mx-auto px-4">
         <motion.div
           initial={{
             opacity: 0,
