@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import HNThemeProvider from "@/components/provider/HNThemeProvider";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
-import PageTransition from "@/components/shared/PageTransition";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +21,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
@@ -34,11 +31,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <HNThemeProvider>
-          <Navbar />
-          <PageTransition>{children}</PageTransition>
-          <Footer />
-        </HNThemeProvider>
+        <HNThemeProvider>{children}</HNThemeProvider>
       </body>
     </html>
   );

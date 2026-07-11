@@ -9,10 +9,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <DashboardSidebar collapsed={collapsed} setCollapsed={setCollapsed}>
-        <TooltipProvider>Menu Items</TooltipProvider>
-      </DashboardSidebar>
-      {children}
+      <div className="flex min-h-screen w-full gap-5">
+        <DashboardSidebar collapsed={collapsed} setCollapsed={setCollapsed}>
+          <TooltipProvider>Menu Items</TooltipProvider>
+        </DashboardSidebar>
+
+        {children}
+      </div>
     </>
   );
 };
