@@ -10,17 +10,17 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 import SidebarHeader from "./SidebarHeader";
 import SidebarFooter from "./SidebarFooter";
+import { employerSidebarItems } from "./sidebarItems";
+import SidebarMenuItem from "./SidebarMenuItem";
 
 type DashboardSidebarProps = {
   collapsed: boolean;
   setCollapsed: (value: boolean) => void;
-  children: React.ReactNode;
 };
 
 const DashboardSidebar = ({
   collapsed,
   setCollapsed,
-  children,
 }: DashboardSidebarProps) => {
   return (
     <motion.aside
@@ -31,20 +31,20 @@ const DashboardSidebar = ({
         duration: 0.25,
       }}
       className="
-        hidden
         md:flex
-        h-screen
+        h-full
+        min-h-screen
         sticky
         top-0
         border-r
+        border-border
         bg-background/95
         backdrop-blur-xl
         flex-col
-        overflow-hidden
+        
       "
     >
       {/* Header */}
-
       <div className="relative border-b px-4 py-5">
         <SidebarHeader collapsed={collapsed} />
 
@@ -67,15 +67,19 @@ const DashboardSidebar = ({
           )}
         </Button>
       </div>
-
       {/* Menu */}
-
-      <ScrollArea className="flex-1 px-3 py-5">
-        <nav className="space-y-2">{children}</nav>
+      <ScrollArea className="flex-1 px-3 ">
+        <nav className="space-y-2">
+          {employerSidebarItems.map((item) => (
+            <SidebarMenuItem
+              key={item.href}
+              item={item}
+              collapsed={collapsed}
+            />
+          ))}
+        </nav>
       </ScrollArea>
-
       {/* Footer */}
-
       <div className="border-t">
         <SidebarFooter collapsed={collapsed} />
       </div>
