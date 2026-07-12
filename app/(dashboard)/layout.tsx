@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardSidebar from "@/components/DashboardSidebar/DashboardSidebar";
+import DashboardSidebar from "@/components/Dashboard/DashboardSidebar/DashboardSidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState } from "react";
 
@@ -9,10 +9,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <div className="flex min-h-screen w-full gap-5">
+      <div className="flex min-h-screen w-full">
         <DashboardSidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-
-        {children}
+        <div className="w-full">
+          <div className="container mx-auto md:mx-1">{children}</div>
+        </div>
       </div>
     </>
   );

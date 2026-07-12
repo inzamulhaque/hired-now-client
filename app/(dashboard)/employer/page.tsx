@@ -1,5 +1,11 @@
+import WelcomeCard from "@/components/Dashboard/employer/WelcomeCard";
+
 const page = () => {
-  return <>Test</>;
+  return (
+    <>
+      <WelcomeCard />
+    </>
+  );
 };
 
 export default page;
