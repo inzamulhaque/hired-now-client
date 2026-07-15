@@ -16,6 +16,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { TJob } from "@/types";
+import JobStatusBadge from "./JobStatusBadge";
+import JobActions from "./JobActions";
+import { useState } from "react";
+import DeleteJobDialog from "./DeleteJobDialog";
 
 type Props = {
   job: TJob;
@@ -30,6 +34,8 @@ const statusStyles = {
 };
 
 const JobCard = ({ job }: Props) => {
+  const [openDelete, setOpenDelete] = useState<boolean>(false);
+
   const skills =
     typeof job.skillsRequired === "string"
       ? job.skillsRequired.split(",")
@@ -105,20 +111,12 @@ const JobCard = ({ job }: Props) => {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className={statusStyles[job.status]}>
-                  {job.status}
-                </Badge>
+                <JobStatusBadge status={job.status} />
 
                 <Badge variant="secondary">{job.jobType}</Badge>
 
                 {job.aiEnhanced && (
-                  <Badge
-                    className="
-                      bg-violet-500/10
-                      text-violet-600
-                      border-violet-500/20
-                    "
-                  >
+                  <Badge className="border-violet-500/20 bg-violet-500/10 text-violet-600">
                     <Brain className="mr-1 h-3.5 w-3.5" />
                     AI Enhanced
                   </Badge>
@@ -227,24 +225,23 @@ const JobCard = ({ job }: Props) => {
               sm:flex-row
             "
           >
-            <Button asChild className="flex-1">
-              <Link href={`/dashboard/employer/jobs/${job.id}`}>
-                <Eye className="mr-2 h-4 w-4" />
-                View Details
-              </Link>
-            </Button>
+            <JobActions
+              jobId={job.id}
+              onDelete={() => setOpenDelete(true)}
+              onArchive={() => console.log("Archive")}
+              onClose={() => console.log("Close")}
+              onDuplicate={() => console.log("Duplicate")}
+            />
 
-            <Button variant="outline" asChild className="flex-1">
-              <Link href={`/dashboard/employer/jobs/edit/${job.id}`}>
-                <Pencil className="mr-2 h-4 w-4" />
-                Edit Job
-              </Link>
-            </Button>
-
-            <Button variant="secondary" className="group">
-              More
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <DeleteJobDialog
+              open={openDelete}
+              onOpenChange={setOpenDelete}
+              jobTitle={job.title}
+              onDelete={async () => {
+                // await deleteJob(job.id)
+                setOpenDelete(false);
+              }}
+            />
           </div>
         </CardContent>
       </Card>
