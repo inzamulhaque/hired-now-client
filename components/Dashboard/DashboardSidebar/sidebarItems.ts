@@ -23,12 +23,12 @@ export type TSidebarItem = {
 export const employerSidebarItems: TSidebarItem[] = [
   {
     title: "Dashboard",
-    href: "/dashboard",
+    href: "/employer/dashboard",
     icon: LayoutDashboard,
   },
   {
     title: "Jobs",
-    href: "/dashboard/jobs",
+    href: "/employer/dashboard/jobs",
     icon: BriefcaseBusiness,
   },
   {
