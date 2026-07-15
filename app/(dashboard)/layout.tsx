@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full">
           <DashboardTopbar onMenuClick={() => setMobileOpen(true)} />
 
-          <div className="md:mx-2 lg:mx-3">{children}</div>
+          <div className="mx-1 md:mx-2 lg:mx-3">{children}</div>
         </div>
       </div>
     </>
