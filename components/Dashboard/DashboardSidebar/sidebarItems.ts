@@ -33,7 +33,7 @@ export const employerSidebarItems: TSidebarItem[] = [
   },
   {
     title: "Applicants",
-    href: "/dashboard/applicants",
+    href: "/employer/dashboard/applicants",
     icon: Users,
     badge: "12",
   },
