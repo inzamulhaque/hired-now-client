@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 
-import { Bell, ChevronRight, Menu, Search } from "lucide-react";
+import { Bell, ChevronRight, Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -18,46 +18,44 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import ThemeToggle from "@/components/shared/ThemeToggle";
+interface DashboardTopbarProps {
+  collapsed: boolean;
+  setCollapsed: Dispatch<SetStateAction<boolean>>;
+}
 
-type Props = {
-  onMenuClick?: () => void;
-};
-
-const DashboardTopbar = ({ onMenuClick }: Props) => {
+const DashboardTopbar = ({ collapsed, setCollapsed }: DashboardTopbarProps) => {
   const pathname = usePathname();
 
   const breadcrumbs = pathname.split("/").filter(Boolean);
 
   return (
     <motion.header
-      initial={{
-        opacity: 0,
-        y: -20,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
-      className="
-        sticky
-        top-0
-        z-40
-        border-b
-        bg-background/80
-        backdrop-blur-xl
-        mb-2
-      "
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="sticky top-0 z-40 mb-2 border-b bg-background/80 backdrop-blur-xl"
     >
       <div className="flex h-16 items-center justify-between px-4 lg:px-8">
+        {/* Left */}
         <div className="flex items-center gap-4">
           <Button
             size="icon"
             variant="ghost"
             className="md:hidden"
-            onClick={onMenuClick}
+            onClick={() => setCollapsed((prev) => !prev)}
+            aria-label={collapsed ? "Open sidebar" : "Close sidebar"}
           >
-            <Menu className="h-5 w-5" />
+            <motion.div
+              initial={false}
+              animate={{ rotate: collapsed ? 0 : 180 }}
+              transition={{ duration: 0.2 }}
+            >
+              {collapsed ? (
+                <Menu className="h-5 w-5" />
+              ) : (
+                <X className="h-5 w-5" />
+              )}
+            </motion.div>
           </Button>
 
           <nav className="hidden items-center gap-2 text-sm md:flex">
@@ -72,44 +70,53 @@ const DashboardTopbar = ({ onMenuClick }: Props) => {
                       : "text-muted-foreground capitalize"
                   }
                 >
-                  {item.replace("-", " ")}
+                  {item.replace(/-/g, " ")}
                 </span>
               </div>
             ))}
           </nav>
         </div>
 
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
+        {/* Right */}
+        {collapsed && (
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
 
-          <Button size="icon" variant="ghost" className="relative">
-            <Bell className="h-5 w-5" />
+            <Button
+              size="icon"
+              variant="ghost"
+              className="relative"
+              aria-label="Notifications"
+            >
+              <Bell className="h-5 w-5" />
+              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500" />
+            </Button>
 
-            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500" />
-          </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="rounded-full focus:outline-none"
+                  aria-label="Open user menu"
+                >
+                  <Avatar className="h-10 w-10 cursor-pointer">
+                    <AvatarImage src="" alt="User Avatar" />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+                </button>
+              </DropdownMenuTrigger>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="rounded-full">
-                <Avatar className="h-10 w-10 cursor-pointer">
-                  <AvatarImage src="" />
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>Profile</DropdownMenuItem>
 
-                  <AvatarFallback>JD</AvatarFallback>
-                </Avatar>
-              </button>
-            </DropdownMenuTrigger>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
 
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-
-              <DropdownMenuItem className="text-red-500">
-                Logout
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+                <DropdownMenuItem className="text-red-500 focus:text-red-500">
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        )}
       </div>
     </motion.header>
   );
