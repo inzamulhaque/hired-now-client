@@ -16,25 +16,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-import { TJobApplication } from "@/types";
+import { TApplicant } from "@/types";
 import ApplicantActions from "./ApplicantActions";
 import ApplicantStatusBadge from "./ApplicantStatusBadge";
 
 type Props = {
-  application: TJobApplication;
-
-  freelancer: {
-    id: string;
-    name: string;
-    image?: string;
-    title: string;
-    skills: string[];
-  };
-
-  jobTitle: string;
+  application: TApplicant;
 };
 
-const ApplicantCard = ({ application, freelancer, jobTitle }: Props) => {
+const ApplicantCard = ({ application }: Props) => {
   return (
     <motion.div
       layout
@@ -72,9 +62,11 @@ const ApplicantCard = ({ application, freelancer, jobTitle }: Props) => {
           <div className="flex items-start justify-between">
             <div className="flex gap-4">
               <Avatar className="h-14 w-14 border">
-                <AvatarImage src={freelancer.image} />
+                <AvatarImage src={application.freelancer.image} />
 
-                <AvatarFallback>{freelancer.name.charAt(0)}</AvatarFallback>
+                <AvatarFallback>
+                  {application.freelancer.name.charAt(0)}
+                </AvatarFallback>
               </Avatar>
 
               <div>
@@ -86,11 +78,11 @@ const ApplicantCard = ({ application, freelancer, jobTitle }: Props) => {
                     group-hover:text-primary
                   "
                 >
-                  {freelancer.name}
+                  {application.freelancer.name}
                 </h3>
 
                 <p className="text-sm text-muted-foreground">
-                  {freelancer.title}
+                  {application.freelancer.title}
                 </p>
               </div>
             </div>
@@ -108,7 +100,7 @@ const ApplicantCard = ({ application, freelancer, jobTitle }: Props) => {
             <div className="mt-2 flex items-center gap-2">
               <BriefcaseBusiness className="h-4 w-4 text-primary" />
 
-              <span className="font-semibold">{jobTitle}</span>
+              <span className="font-semibold">{application.job.title}</span>
             </div>
           </div>
 
@@ -148,7 +140,7 @@ const ApplicantCard = ({ application, freelancer, jobTitle }: Props) => {
           {/* Skills */}
 
           <div className="mt-5 flex flex-wrap gap-2">
-            {freelancer.skills.slice(0, 5).map((skill) => (
+            {application.freelancer.skills.slice(0, 5).map((skill) => (
               <Badge key={skill} variant="secondary" className="rounded-full">
                 {skill}
               </Badge>

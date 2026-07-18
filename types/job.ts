@@ -39,3 +39,27 @@ export type TJobApplication = {
   aiNote?: string;
   proposedBudget: number;
 };
+
+export type TApplicant = {
+  id: string;
+  jobId: string;
+  freelancerId: string;
+
+  coverNote: string;
+  status: EApplicationStatus;
+
+  proposedBudget: number;
+
+  aiMatchScore?: number;
+
+  freelancer: {
+    name: string;
+    image?: string;
+    title: string;
+    skills: string[];
+  };
+
+  job: {
+    title: string;
+  };
+};
