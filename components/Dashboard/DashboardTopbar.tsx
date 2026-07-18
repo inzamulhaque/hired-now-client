@@ -78,45 +78,48 @@ const DashboardTopbar = ({ collapsed, setCollapsed }: DashboardTopbarProps) => {
         </div>
 
         {/* Right */}
-        {collapsed && (
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
 
-            <Button
-              size="icon"
-              variant="ghost"
-              className="relative"
-              aria-label="Notifications"
-            >
-              <Bell className="h-5 w-5" />
-              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500" />
-            </Button>
+        <div
+          className={`items-center gap-3 ${
+            collapsed ? "flex" : "hidden"
+          } md:flex`}
+        >
+          <ThemeToggle />
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className="rounded-full focus:outline-none"
-                  aria-label="Open user menu"
-                >
-                  <Avatar className="h-10 w-10 cursor-pointer">
-                    <AvatarImage src="" alt="User Avatar" />
-                    <AvatarFallback>JD</AvatarFallback>
-                  </Avatar>
-                </button>
-              </DropdownMenuTrigger>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="relative"
+            aria-label="Notifications"
+          >
+            <Bell className="h-5 w-5" />
+            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500" />
+          </Button>
 
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="rounded-full focus:outline-none"
+                aria-label="Open user menu"
+              >
+                <Avatar className="h-10 w-10 cursor-pointer">
+                  <AvatarImage src="" alt="User Avatar" />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
+              </button>
+            </DropdownMenuTrigger>
 
-                <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>Profile</DropdownMenuItem>
 
-                <DropdownMenuItem className="text-red-500 focus:text-red-500">
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        )}
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+
+              <DropdownMenuItem className="text-red-500 focus:text-red-500">
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </motion.header>
   );
