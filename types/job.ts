@@ -9,6 +9,14 @@ export enum EJobStatus {
   FILLED = "FILLED",
 }
 
+export enum EApplicationStatus {
+  PENDING = "PENDING",
+  REVIEWED = "REVIEWED",
+  SHORTLISTED = "SHORTLISTED",
+  REJECTED = "REJECTED",
+  HIRED = "HIRED",
+}
+
 export type TJob = {
   id: string;
   employerId: string;
@@ -19,4 +27,15 @@ export type TJob = {
   jobType: EJobType;
   status: EJobStatus;
   aiEnhanced: boolean;
+};
+
+export type TJobApplication = {
+  id: string;
+  jobId: string;
+  freelancerId: string;
+  coverNote: string;
+  status: EApplicationStatus;
+  aiMatchScore?: number;
+  aiNote?: string;
+  proposedBudget: number;
 };
