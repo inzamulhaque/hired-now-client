@@ -1,20 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquare, MailOpen, Users, Sparkles } from "lucide-react";
+import {
+  MessageSquare,
+  MailOpen,
+  Users,
+  Sparkles,
+  Filter,
+  MessageCirclePlus,
+  RefreshCcw,
+  Search,
+} from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 type MessagesHeaderProps = {
   totalConversations?: number;
   unreadMessages?: number;
   onlineFreelancers?: number;
+
+  search?: string;
+  onSearch?: (value: string) => void;
+
+  onRefresh?: () => void;
+  onNewMessage?: () => void;
+  onFilter?: () => void;
 };
 
 const MessagesHeader = ({
   totalConversations = 128,
   unreadMessages = 12,
   onlineFreelancers = 36,
+
+  search = "",
+  onSearch,
+  onRefresh,
+  onNewMessage,
+  onFilter,
 }: MessagesHeaderProps) => {
   const stats = [
     {
@@ -143,6 +167,129 @@ const MessagesHeader = ({
             })}
           </div>
         </div>
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.35,
+          }}
+          className="
+    mt-10
+    flex
+    flex-col
+    gap-4
+    lg:flex-row
+    lg:items-center
+    lg:justify-between
+  "
+        >
+          {/* Search */}
+
+          <div className="relative w-full lg:max-w-lg">
+            <Search
+              className="
+        absolute
+        left-4
+        top-1/2
+        h-4
+        w-4
+        -translate-y-1/2
+        text-white/70
+      "
+            />
+
+            <Input
+              value={search}
+              onChange={(e) => onSearch?.(e.target.value)}
+              placeholder="Search conversations..."
+              className="
+        h-12
+        rounded-xl
+        border-white/20
+        bg-white/10
+        pl-11
+        text-white
+        placeholder:text-white/60
+        backdrop-blur-md
+
+        focus-visible:ring-2
+        focus-visible:ring-white/30
+        focus-visible:border-white/40
+      "
+            />
+          </div>
+
+          {/* Actions */}
+
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              variant="secondary"
+              size="icon"
+              onClick={onRefresh}
+              className="
+                rounded-xl
+                border
+                border-white/20
+                bg-white/10
+                text-white
+                backdrop-blur-md
+                hover:bg-white/20
+              "
+            >
+              <RefreshCcw className="h-4 w-4" />
+            </Button>
+
+            <Button
+              variant="secondary"
+              onClick={onFilter}
+              className="
+                  rounded-xl
+                  border
+                  border-white/20
+                  bg-white/10
+                  text-white
+                  backdrop-blur-md
+                  hover:bg-white/20
+                "
+            >
+              <Filter className="mr-2 h-4 w-4" />
+              Filters
+              {unreadMessages > 0 && (
+                <Badge
+                  className="
+                        ml-2
+                        rounded-full
+                        bg-red-500
+                        text-white
+                    "
+                >
+                  {unreadMessages}
+                </Badge>
+              )}
+            </Button>
+
+            <Button
+              onClick={onNewMessage}
+              className="
+                  rounded-xl
+                  bg-white
+                  px-6
+                  text-slate-900
+                  hover:bg-slate-100
+      "
+            >
+              <MessageCirclePlus className="mr-2 h-4 w-4" />
+              New Message
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </motion.section>
   );
