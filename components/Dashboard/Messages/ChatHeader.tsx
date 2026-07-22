@@ -1,12 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Circle, BriefcaseBusiness } from "lucide-react";
+import {
+  Circle,
+  BriefcaseBusiness,
+  Phone,
+  Video,
+  MoreVertical,
+  User,
+  Archive,
+  Trash2,
+  Flag,
+} from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 type ChatHeaderProps = {
   freelancer: {
@@ -22,6 +47,12 @@ type ChatHeaderProps = {
     id: string;
     title: string;
   };
+
+  onCall?: () => void;
+  onVideoCall?: () => void;
+  onArchive?: () => void;
+  onDelete?: () => void;
+  onReport?: () => void;
 };
 
 const ChatHeader = ({ freelancer, job }: ChatHeaderProps) => {
@@ -125,7 +156,115 @@ const ChatHeader = ({ freelancer, job }: ChatHeaderProps) => {
         </div>
 
         {/* Actions Placeholder */}
-        <div className="flex items-center gap-2">{/* Part 3.1B */}</div>
+        <div className="flex items-center gap-2">
+          <TooltipProvider>
+            <div className="flex items-center gap-2">
+              {/* Audio Call */}
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => {}}
+                    className="
+            hidden
+            rounded-xl
+            transition-all
+            hover:bg-primary/10
+            md:flex
+          "
+                  >
+                    <Phone className="h-5 w-5" />
+                  </Button>
+                </TooltipTrigger>
+
+                <TooltipContent>Audio Call</TooltipContent>
+              </Tooltip>
+
+              {/* Video */}
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => {}}
+                    className="
+            hidden
+            rounded-xl
+            transition-all
+            hover:bg-primary/10
+            md:flex
+          "
+                  >
+                    <Video className="h-5 w-5" />
+                  </Button>
+                </TooltipTrigger>
+
+                <TooltipContent>Video Call</TooltipContent>
+              </Tooltip>
+
+              {/* Menu */}
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size="icon" variant="ghost" className="rounded-xl">
+                    <MoreVertical className="h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent align="end" className="w-60 rounded-2xl">
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href={`/dashboard/employer/freelancers/${freelancer.id}`}
+                    >
+                      <User className="mr-2 h-4 w-4" />
+                      View Profile
+                    </Link>
+                  </DropdownMenuItem>
+
+                  {job && (
+                    <DropdownMenuItem asChild>
+                      <Link href={`/dashboard/employer/jobs/${job.id}`}>
+                        <BriefcaseBusiness className="mr-2 h-4 w-4" />
+                        View Job
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
+
+                  <DropdownMenuSeparator />
+
+                  <DropdownMenuItem
+                    onClick={() => {}}
+                    className="cursor-pointer"
+                  >
+                    <Archive className="mr-2 h-4 w-4" />
+                    Archive Conversation
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem
+                    onClick={() => {}}
+                    className="cursor-pointer text-red-600"
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    Delete Conversation
+                  </DropdownMenuItem>
+
+                  <DropdownMenuSeparator />
+
+                  <DropdownMenuItem
+                    onClick={() => {}}
+                    className="cursor-pointer"
+                  >
+                    <Flag className="mr-2 h-4 w-4" />
+                    Report User
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </TooltipProvider>
+        </div>
       </div>
     </motion.header>
   );
